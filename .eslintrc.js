@@ -48,7 +48,7 @@ module.exports = {
         extensions: ['.jsx', '.tsx'],
       },
     ],
-    'arrow-body-style': ['error', 'always'],
+    'arrow-body-style': ['error', 'as-needed'],
     'no-use-before-define': [
       'error',
       { functions: false, classes: true, variables: true },
