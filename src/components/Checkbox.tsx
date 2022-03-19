@@ -8,7 +8,7 @@ type Props = {
 }
 
 const StyledLabel = styled.label`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 4px;
   .label__check {
@@ -21,6 +21,7 @@ const StyledLabel = styled.label`
     position: relative;
     overflow: hidden;
     background: white;
+    border-radius: 4px;
     &::before {
       content: '';
       display: inline-block;
@@ -42,9 +43,10 @@ const StyledLabel = styled.label`
       background-color: white;
     }
     &--checked {
-      background-color: red;
+      background-color: #4880c8;
+      border-color: #4880c8;
       &::after {
-        background-color: red;
+        background-color: #4880c8;
         left: 100%;
         transition: 0.2s ease-in-out left;
       }
