@@ -53,6 +53,8 @@ module.exports = {
       'error',
       { functions: false, classes: true, variables: true },
     ],
+    'consistent-return': 0,
+    'default-case': 0,
     'no-restricted-exports': 0,
     'react/react-in-jsx-scope': 0,
     'import/prefer-default-export': 0,
