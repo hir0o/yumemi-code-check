@@ -26,7 +26,5 @@ export const fechPopuration = async (
     throw new Error('データが取得できませんでした')
   }
 
-  console.log(response.result.data[0].data)
-
   return response.result.data[0].data
 }

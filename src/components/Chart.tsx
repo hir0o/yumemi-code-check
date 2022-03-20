@@ -3,7 +3,6 @@ import { Line } from 'react-chartjs-2'
 import { useEffect, useState, VFC } from 'react'
 import { usePrevious } from '../hooks/usePrevious'
 import { fechPopuration } from '../lib/fetchPopuration'
-// import { fechPopuration } from '../lib/fetchPopuration'
 
 type Props = {
   selectPrefecture: Prefecture[]
