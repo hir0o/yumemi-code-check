@@ -1,7 +1,11 @@
 import { styled } from '@linaria/react'
-import { useEffect, useState, VFC } from 'react'
+import { Dispatch, memo, SetStateAction, useEffect, useState, VFC } from 'react'
 import { fetchPrefectures } from '../lib/fetchPrefectures'
 import Checkbox from './Checkbox'
+
+type Props = {
+  setSelectPrefecture: Dispatch<SetStateAction<Prefecture[]>>
+}
 
 const StyledPrefectures = styled.div`
   .prefectures__list {
@@ -11,7 +15,7 @@ const StyledPrefectures = styled.div`
   }
 `
 
-const Prefectures: VFC = () => {
+const Prefectures: VFC<Props> = ({ setSelectPrefecture }) => {
   const [prefectures, setPrefectures] = useState<Prefecture[]>([])
 
   useEffect(() => {
@@ -24,16 +28,32 @@ const Prefectures: VFC = () => {
       })
   }, [])
 
+  const handleCheckboxChange =
+    (prefName: string, prefCode: number) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { checked, name } = e.target
+
+      setSelectPrefecture((prev) => {
+        if (checked) return [...prev, { prefName, prefCode }]
+        return prev.filter((pref) => pref.prefCode !== Number(name))
+      })
+    }
+
   return (
     <StyledPrefectures>
       <h2>都道府県一覧</h2>
       <div className="prefectures__list">
         {prefectures.map(({ prefCode, prefName }) => (
-          <Checkbox key={prefCode} title={prefName} name={String(prefCode)} />
+          <Checkbox
+            key={prefCode}
+            title={prefName}
+            name={String(prefCode)}
+            onChange={handleCheckboxChange(prefName, prefCode)}
+          />
         ))}
       </div>
     </StyledPrefectures>
   )
 }
 
-export default Prefectures
+export default memo(Prefectures)
