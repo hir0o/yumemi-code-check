@@ -6,6 +6,6 @@ type ResponseType = {
 }
 
 export const fetchPrefectures = async (): Promise<ResponseType> => {
-  const response = await fetcher('prefectures')
-  return response as ResponseType
+  const response = await fetcher<ResponseType>('prefectures')
+  return response
 }
