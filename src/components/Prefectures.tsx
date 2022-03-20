@@ -1,6 +1,15 @@
+import { styled } from '@linaria/react'
 import { useEffect, useState, VFC } from 'react'
 import { fetchPrefectures } from '../lib/fetchPrefectures'
 import Checkbox from './Checkbox'
+
+const StyledPrefectures = styled.div`
+  .prefectures__list {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 4px;
+  }
+`
 
 const Prefectures: VFC = () => {
   const [prefectures, setPrefectures] = useState<Prefecture[]>([])
@@ -16,12 +25,14 @@ const Prefectures: VFC = () => {
   }, [])
 
   return (
-    <div className="prefectures">
+    <StyledPrefectures>
       <h2>都道府県一覧</h2>
-      {prefectures.map(({ prefCode, prefName }) => (
-        <Checkbox key={prefCode} title={prefName} name={String(prefCode)} />
-      ))}
-    </div>
+      <div className="prefectures__list">
+        {prefectures.map(({ prefCode, prefName }) => (
+          <Checkbox key={prefCode} title={prefName} name={String(prefCode)} />
+        ))}
+      </div>
+    </StyledPrefectures>
   )
 }
 
