@@ -12,6 +12,7 @@ type Props = {
 type Dataset = {
   label: string
   data: Popuration['value'][]
+  backgroundColor: string
 }
 
 ChartJS.register(...registerables)
@@ -39,6 +40,9 @@ const Chart: VFC<Props> = ({ selectPrefecture }) => {
             {
               label: newSelectPrefecture.prefName,
               data: res.map((pop) => pop.value),
+              backgroundColor: `#${Math.floor(
+                Math.random() * 16777215 // FFFFFF(16)
+              ).toString(16)}`,
             },
           ])
         })
