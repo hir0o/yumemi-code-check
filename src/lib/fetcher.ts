@@ -1,4 +1,4 @@
-const BASE_URL = 'https://opendata.vitoria.es/api/recurso/'
+const BASE_URL = 'https://opendata.resas-portal.go.jp/api/v1'
 
 export const fetcher = async <T>(path: string): Promise<T> => {
   const response = await fetch(`${BASE_URL}/${path}`, {
