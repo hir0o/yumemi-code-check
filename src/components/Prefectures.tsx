@@ -8,10 +8,13 @@ type Props = {
 }
 
 const StyledPrefectures = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
   .prefectures__list {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-gap: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 `
 
