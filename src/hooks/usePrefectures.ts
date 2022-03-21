@@ -7,7 +7,7 @@ export const usePrefectures = () => {
   useEffect(() => {
     fetchPrefectures()
       .then((res) => {
-        setPrefectures(res.result)
+        setPrefectures(res)
       })
       .catch((err) => {
         console.error(err)
