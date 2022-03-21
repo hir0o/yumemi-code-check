@@ -1,5 +1,6 @@
 import { styled } from '@linaria/react'
 import { Dispatch, memo, SetStateAction, useEffect, useState, VFC } from 'react'
+import { usePrefectures } from '../hooks/usePrefectures'
 import { fetchPrefectures } from '../lib/fetchPrefectures'
 import Checkbox from './Checkbox'
 
@@ -16,17 +17,7 @@ const StyledPrefectures = styled.div`
 `
 
 const Prefectures: VFC<Props> = ({ setSelectPrefecture }) => {
-  const [prefectures, setPrefectures] = useState<Prefecture[]>([])
-
-  useEffect(() => {
-    fetchPrefectures()
-      .then((res) => {
-        setPrefectures(res.result)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-  }, [])
+  const prefectures = usePrefectures()
 
   const handleCheckboxChange =
     (prefName: string, prefCode: number) =>
