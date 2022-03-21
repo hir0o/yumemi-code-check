@@ -1,5 +1,5 @@
 import { Chart as ChartJS, registerables } from 'chart.js'
-import { VFC } from 'react'
+import { memo, VFC } from 'react'
 import { Line } from 'react-chartjs-2'
 import { usePopurationDataset } from '../hooks/usePopurationDataset'
 
@@ -71,4 +71,4 @@ const Chart: VFC<Props> = ({ selectPrefecture }) => {
   )
 }
 
-export default Chart
+export default memo(Chart)

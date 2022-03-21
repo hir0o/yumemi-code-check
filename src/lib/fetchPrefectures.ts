@@ -5,7 +5,7 @@ type ResponseType = {
   result: Prefecture[]
 }
 
-export const fetchPrefectures = async (): Promise<ResponseType> => {
+export const fetchPrefectures = async (): Promise<Prefecture[]> => {
   const response = await fetcher<ResponseType>('prefectures')
-  return response
+  return response.result
 }

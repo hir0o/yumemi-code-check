@@ -1,6 +1,6 @@
 import { styled } from '@linaria/react'
-import { Dispatch, memo, SetStateAction, useEffect, useState, VFC } from 'react'
-import { fetchPrefectures } from '../lib/fetchPrefectures'
+import { Dispatch, memo, SetStateAction, useCallback, VFC } from 'react'
+import { usePrefectures } from '../hooks/usePrefectures'
 import Checkbox from './Checkbox'
 
 type Props = {
@@ -19,28 +19,20 @@ const StyledPrefectures = styled.div`
 `
 
 const Prefectures: VFC<Props> = ({ setSelectPrefecture }) => {
-  const [prefectures, setPrefectures] = useState<Prefecture[]>([])
+  const prefectures = usePrefectures()
 
-  useEffect(() => {
-    fetchPrefectures()
-      .then((res) => {
-        setPrefectures(res.result)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-  }, [])
-
-  const handleCheckboxChange =
+  const handleCheckboxChange = useCallback(
     (prefName: string, prefCode: number) =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { checked, name } = e.target
+      (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { checked, name } = e.target
 
-      setSelectPrefecture((prev) => {
-        if (checked) return [...prev, { prefName, prefCode }]
-        return prev.filter((pref) => pref.prefCode !== Number(name))
-      })
-    }
+        setSelectPrefecture((prev) => {
+          if (checked) return [...prev, { prefName, prefCode }]
+          return prev.filter((pref) => pref.prefCode !== Number(name))
+        })
+      },
+    [setSelectPrefecture]
+  )
 
   return (
     <StyledPrefectures>
