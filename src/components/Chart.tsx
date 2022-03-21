@@ -44,7 +44,7 @@ const Chart: VFC<Props> = ({ selectPrefecture }) => {
               display: false,
             },
             labels: Array.from({ length: 18 }, (_, i) => i * 5 + 1960).map(
-              String
+              (year) => `${year}年`
             ),
           },
           y: {
