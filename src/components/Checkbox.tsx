@@ -9,13 +9,15 @@ type Props = {
 }
 
 const StyledLabel = styled.label`
+  --main-color: #4880c8;
+  --border-color: #c8c7c8;
   display: inline-flex;
   align-items: center;
   gap: 4px;
   .label__check {
-    width: 12px;
-    height: 12px;
-    border: 2px solid #c8c7c8;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--border-color);
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -44,10 +46,10 @@ const StyledLabel = styled.label`
       background-color: white;
     }
     &--checked {
-      background-color: #4880c8;
-      border-color: #4880c8;
+      background-color: var(--main-color);
+      border-color: var(--main-color);
       &::after {
-        background-color: #4880c8;
+        background-color: var(--main-color);
         left: 100%;
         transition: 0.2s ease-in-out left;
       }
