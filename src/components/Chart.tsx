@@ -15,26 +15,57 @@ const Chart: VFC<Props> = ({ selectPrefecture }) => {
   return (
     <Line
       data={{
-        labels: [
-          '1960年',
-          '1965年',
-          '1970年',
-          '1975年',
-          '1980年',
-          '1985年',
-          '1990年',
-          '1995年',
-          '2000年',
-          '2005年',
-          '2010年',
-          '2015年',
-          '2020年',
-          '2025年',
-          '2030年',
-          '2035年',
-          '2040年',
-        ],
         datasets,
+      }}
+      options={{
+        plugins: {
+          legend: {
+            position: 'right',
+            align: 'start',
+            labels: {
+              padding: 10,
+              font: {
+                size: 12,
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: '年度',
+              align: 'end',
+              font: {
+                size: 20,
+              },
+            },
+            grid: {
+              display: false,
+            },
+            labels: Array.from({ length: 18 }, (_, i) => i * 5 + 1960).map(
+              String
+            ),
+          },
+          y: {
+            title: {
+              display: true,
+              text: '人口数',
+              align: 'end',
+              font: {
+                size: 20,
+              },
+            },
+            grid: {
+              display: false,
+            },
+            ticks: {
+              display: true,
+            },
+            suggestedMin: 100000,
+            suggestedMax: 600000,
+          },
+        },
       }}
     />
   )
