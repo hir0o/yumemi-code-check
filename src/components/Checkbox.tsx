@@ -27,9 +27,9 @@ const StyledLabel = styled.label`
       content: '';
       display: inline-block;
       transform: rotate(45deg);
-      margin-bottom: 3px;
-      height: 60%;
-      width: 30%;
+      margin-bottom: 2px;
+      height: 80%;
+      width: 50%;
       border-bottom: 2px solid white;
       border-right: 2px solid white;
     }
