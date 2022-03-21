@@ -1,10 +1,11 @@
-import React, { memo, VFC } from 'react'
+import React, { ChangeEvent, memo, VFC } from 'react'
 import { styled } from '@linaria/react'
 import cn from 'classnames'
 
 type Props = {
   title: string
   name: string
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const StyledLabel = styled.label`
@@ -65,12 +66,14 @@ const StyledLabel = styled.label`
   }
 `
 
-const Checkbox: VFC<Props> = ({ name, title }) => {
+const Checkbox: VFC<Props> = ({ name, title, onChange }) => {
   const [isChecked, setIsChecked] = React.useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { checked } = e.target
+
     setIsChecked(checked)
+    onChange(e)
   }
 
   return (
